@@ -26,7 +26,7 @@
  *
  * Options: [2400: 0, 9600: 1, 19200: 2, 38400: 3, 57600: 4, 115200: 5, 250000: 6, 500000: 7, 1000000: 8]
  */
-#define BAUDRATE 5 // Default: 5
+#define BAUDRATE 6 // Default: 5
 
 /**
  * Default Primary Language (for Touch-Mode only)
@@ -41,7 +41,7 @@
  *          HUNGARIAN, TURKISH, GREEK, SLOVENIAN, CATALAN, TRAD_CHINESE,
  *          UKRAINIAN
  */
-#define DEFAULT_LANGUAGE ENGLISH // Default: ENGLISH
+#define DEFAULT_LANGUAGE FRENCH // Default: ENGLISH
 
 /**
  * Default Touch Mode Color Options
@@ -89,7 +89,7 @@
 #define MARLIN_FNCOLOR 0 // Default: 0
 
 // Text displayed at the top of the TFT in Marlin Mode.
-#define MARLIN_BANNER_TEXT "LCD12864 Emulator"  // Default: "LCD12864 Emulator"
+#define MARLIN_BANNER_TEXT "SIDEWINDER X1"  // Default: "LCD12864 Emulator"
 
 // show banner text at the top of the TFT in Marlin Mode.
 #define MARLIN_SHOW_BANNER true // To enabled: true | To disabled: false (Default: true)
@@ -138,8 +138,8 @@
                            // of the number of extruders)
 
 #define PREHEAT_LABELS   {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND   {200,   240,    230,   170,    220,   250}
-#define PREHEAT_BED      {60,    70,     90,    50,     50,    90}
+#define PREHEAT_HOTEND   {210,   2430,    230,   210,    220,   250}
+#define PREHEAT_BED      {60,    70,     90,    50,     60,    90}
 
 #define HEAT_MAX_TEMP    {275,       275,       275,       275,       275,       275,       150,    60}
 #define HEAT_SIGN_ID     {"T0:",     "T1:",     "T2:",     "T3:",     "T4:",     "T5:",     "B:",   "C:"}
@@ -151,7 +151,7 @@
 #define EXTRUDER_ID      {"E0",   "E1",      "E2",      "E3",      "E4",      "E5"}
 
 // Prevent extrusion if the temperature is below set temperature
-#define PREVENT_COLD_EXTRUSION_MINTEMP 180
+#define PREVENT_COLD_EXTRUSION_MINTEMP 170
 
 /**
  * Fan control & Fan type Options:
@@ -166,7 +166,7 @@
 #define FAN_TYPE         {         0,         0,         0,         0,         0,         0,         1,         2 };
 
 // Speed/flow rate names displayed in status screen
-#define SPEED_ID {"Sp.", "Fr."} // (speed, flow rate)
+#define SPEED_ID {"Vi.", "Fr."} // (speed, flow rate)
 
 //Axes names displayed in Parameter Settings menu
 #define AXIS_DISPLAY_ID  {"X",  "Y",  "Z",   "E",  "E2"} // (X, Y, Z, E, E2)
@@ -190,9 +190,9 @@
 #define X_MIN_POS   0
 #define Y_MIN_POS   0
 #define Z_MIN_POS   0
-#define X_MAX_POS 235
-#define Y_MAX_POS 235
-#define Z_MAX_POS 250
+#define X_MAX_POS 300
+#define Y_MAX_POS 300
+#define Z_MAX_POS 400
 
 // Pause Settings
 #define NOZZLE_PAUSE_RETRACT_LENGTH               15  // (mm)
@@ -208,7 +208,7 @@
  * Manual Leveling
  * Move to four corner points to Leveling manually (Point 1, Point 2, Point 3, Point 4)
  */
-#define LEVELING_EDGE_DISTANCE        20  // Inset distance from bed's edge for calculating leveling point location.
+#define LEVELING_EDGE_DISTANCE        40  // Inset distance from bed's edge for calculating leveling point location.
 #define LEVELING_POINT_Z            0.2f  // Z-axis position when nozzle stays for leveling
 #define LEVELING_POINT_MOVE_Z      10.0f  // Z-axis position when nozzle move to next point
 #define LEVELING_POINT_XY_FEEDRATE  6000  // (mm/min) X and Y axes move feedrate
@@ -338,7 +338,7 @@
  *           3: LED_ORANGE,  4: LED_YELLOW,  5: LED_GREEN,
  *           6: LED_BLUE,    7: LED_INDIGO,  8: LED_VIOLET
 */
-#define STARTUP_KNOB_LED_COLOR 1 // Default: 1
+#define STARTUP_KNOB_LED_COLOR 6 // Default: 1
 
 // Keep the LED state in Marlin Mode
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE
@@ -493,22 +493,22 @@
  * CUSTOM_X_LABEL is the name of the custom button, CUSTOM_X_GCODE is the G-code to be sent by the custom button,
  * this should always end with a New-Line character '\n'
  */
-#define CUSTOM_0_LABEL "Disable Steppers"
+#define CUSTOM_0_LABEL "Désactiver les moteurs"
 #define CUSTOM_0_GCODE "M84\n"
-#define CUSTOM_1_LABEL "Init SD Card"
+#define CUSTOM_1_LABEL "Initialiser la carte SD"
 #define CUSTOM_1_GCODE "M21\n"
-#define CUSTOM_2_LABEL "Release SD Card"
+#define CUSTOM_2_LABEL "Ejecter la carte SD"
 #define CUSTOM_2_GCODE "M22\n"
-#define CUSTOM_3_LABEL "Enable Leveling State"
+#define CUSTOM_3_LABEL "Restaurer le nivellement"
 #define CUSTOM_3_GCODE "M420 S1\n"
-#define CUSTOM_4_LABEL "Save to EEPROM"
+#define CUSTOM_4_LABEL "Sauvegarder dans EEPROM"
 #define CUSTOM_4_GCODE "M500\n"
-#define CUSTOM_5_LABEL "Restore from EEPROM"
+#define CUSTOM_5_LABEL "Restaurer depuis EEPROM"
 #define CUSTOM_5_GCODE "M501\n"
-#define CUSTOM_6_LABEL "EEPROM Defaults"
+#define CUSTOM_6_LABEL "EEPROM par défaut"
 #define CUSTOM_6_GCODE "M502\n"
-//#define CUSTOM_7_LABEL "Custom7"
-//#define CUSTOM_7_GCODE "M105\n"
+#define CUSTOM_7_LABEL "Nivellement"
+#define CUSTOM_7_GCODE "G29\n"
 //#define CUSTOM_8_LABEL "Custom8"
 //#define CUSTOM_8_GCODE "M105\n"
 //#define CUSTOM_9_LABEL "Custom9"
