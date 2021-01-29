@@ -66,6 +66,10 @@ typedef struct
   #define GKEY_ROW_NUM LAYOUT_3_ROW_NUM
 #endif
 
+#define LAYOUT_QWERTY 1
+#define LAYOUT_QWERTZ 2
+#define LAYOUT_AZERTY 3
+
 #define GKEY_WIDTH  (LCD_WIDTH / GKEY_COL_NUM)
 #define GKEY_HEIGHT (LCD_HEIGHT / GKEY_ROW_NUM)
 
@@ -315,13 +319,27 @@ const char * const gcodeKey[][GKEY_KEY_NUM] = {
     "7", "8", "9", "E", "F", "R", "Q",
     ".", "0", "-", "~", "I", "J", "P",
 #else
-  #ifdef TERMINAL_KEYBOARD_QWERTY_LAYOUT
+  #if TERMINAL_KEYBOARD_LAYOUT == LAYOUT_QWERTY
     "\\","|", "!", "\"","$", "%", "&", "/", "=", "?",
     "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
     "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
     "A", "S", "D", "F", "G", "H", "J", "K", "L", "'",
     "Z", "X", "C", "V", "B", "N", "M", ",", ".", ";",
     ":", "_", "@", "#", "~", "-", "+", "*", "(", ")",
+  #elif TERMINAL_KEYBOARD_LAYOUT == LAYOUT_QWERTZ
+    "!", "\"", "$", "%", "&", "/", "(", ")", "=", "?",
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+    "Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P",
+    "A", "S", "D", "F", "G", "H", "J", "K", "L", "@",
+    "Y", "X", "C", "V", "B", "N", "M", ",", ".", "-",
+    "|", ";", ":", "_", "#", "~", "+", "*", "'", "\\",
+  #elif TERMINAL_KEYBOARD_LAYOUT == LAYOUT_AZERTY
+    "#", "@", "~", "&", "(", ")", "_", "'", "\"", "%",
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+    "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P",
+    "Q", "S", "D", "F", "G", "H", "J", "K", "L", "M",
+    "W", "X", "C", "V", "B", "N", ".", ",", ":", ";",
+    "-", "+", "*", "\\", "|", "/", "?","!", "$", "=",
   #else
     "1", "2", "3", "A", "B", "C", "D", "E", "F", "G",
     "4", "5", "6", "H", "I", "J", "K", "L", "M", "N",
@@ -372,6 +390,7 @@ typedef enum
 {
   TERM_PAGE_UP = 0,
   TERM_PAGE_DOWN,
+  TERM_TOGGLE_ACK,
   TERM_BACK,
   TERM_KEY_NUM,  // number of keys
   TERM_IDLE = IDLE_TOUCH,
@@ -383,7 +402,7 @@ typedef enum
 #define CURSOR_END_Y   CTRL_Y0
 
 #define PAGE_ROW_NUM 1
-#define PAGE_COL_NUM 4
+#define PAGE_COL_NUM 5
 #define PAGE_HEIGHT  GKEY_HEIGHT
 #define PAGE_WIDTH   (LCD_WIDTH / PAGE_COL_NUM)
 #define PAGE_X0      0
@@ -397,11 +416,13 @@ const GUI_RECT terminalKeyRect[TERM_KEY_NUM] = {
   {PAGE_X0 + 1 * PAGE_WIDTH, PAGE_Y0 + 0 * PAGE_HEIGHT, PAGE_X0 + 2 * PAGE_WIDTH, PAGE_Y0 + 1 * PAGE_HEIGHT},
   {PAGE_X0 + 2 * PAGE_WIDTH, PAGE_Y0 + 0 * PAGE_HEIGHT, PAGE_X0 + 3 * PAGE_WIDTH, PAGE_Y0 + 1 * PAGE_HEIGHT},
   {PAGE_X0 + 3 * PAGE_WIDTH, PAGE_Y0 + 0 * PAGE_HEIGHT, PAGE_X0 + 4 * PAGE_WIDTH, PAGE_Y0 + 1 * PAGE_HEIGHT},
+  {PAGE_X0 + 4 * PAGE_WIDTH, PAGE_Y0 + 0 * PAGE_HEIGHT, PAGE_X0 + 5 * PAGE_WIDTH, PAGE_Y0 + 1 * PAGE_HEIGHT},
 };
 
-const char * const terminalKey[TERM_KEY_NUM] = {
+const char * terminalKey[TERM_KEY_NUM] = {
   "<",
   ">",
+  "ON",
   "Back"
 };
 
@@ -711,6 +732,9 @@ void terminalDrawMenu(void)
 
   GUI_SetTextMode(GUI_TEXTMODE_TRANS);
 
+  // init toggle ack value
+  terminalKey[TERM_TOGGLE_ACK] = (const char *) textSelect(itemToggle[infoSettings.terminalACK].index);
+
   // draw keyboard
   for (uint8_t i = 0; i < COUNT(terminalKey); i++)
   {
@@ -750,6 +774,12 @@ void menuTerminal(void)
       case TERM_PAGE_DOWN:  // page down
         if (terminal_page.pageIndex > 0)
           terminal_page.pageIndex -= SCROLL_PAGE;
+        break;
+
+      case TERM_TOGGLE_ACK:  // toggle ack in terminal
+        infoSettings.terminalACK = (infoSettings.terminalACK + 1) % ITEM_TOGGLE_NUM;
+        terminalKey[TERM_TOGGLE_ACK] = (const char *) textSelect(itemToggle[infoSettings.terminalACK].index);
+        terminalReDrawButton(TERM_TOGGLE_ACK, false);
         break;
 
       case TERM_BACK:  // back
