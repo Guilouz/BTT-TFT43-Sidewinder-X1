@@ -1,6 +1,6 @@
 #ifndef _CONFIGURATION_H_
 #define _CONFIGURATION_H_
-#define CONFIG_VERSION 20210124
+#define CONFIG_VERSION 20210217
 
 //===========================================================================
 //============================= General Settings ============================
@@ -24,7 +24,7 @@
 
 // Enable Status Screen
 // Enable this to show status screen as the default home screen. Disabling it will show a static menu.
-#define ENABLE_STATUS_SCREEN true  // To enabled: true | To disabled: false (Default: 1)
+#define ENABLE_STATUS_SCREEN true  // To enabled: true | To disabled: false (Default: true)
 
 /**
  * This setting determines the communication speed of the printer.
@@ -96,18 +96,18 @@
 #define MARLIN_FNCOLOR 0  // Default: 0
 
 // Text displayed at the top of the TFT in Marlin Mode
-#define MARLIN_BANNER_TEXT "SIDEWINDER X1"  // Default: "LCD12864 Emulator"
+#define MARLIN_BANNER_TEXT "SIDEWINDER X1"  // Default: "Marlin Mode"
 
 // Show banner text at the top of the TFT in Marlin Mode
 #define MARLIN_SHOW_BANNER true  // To enabled: true | To disabled: false (Default: true)
 
 /**
  * Run Marlin Mode in Fullscreen
-
+ *
  * Options: 0: Disabled (RECOMMENDED FOR TFT24)
  *          1: Enabled
  */
-#define DEFAULT_ST7920_FULLSCREEN_MODE 0  // Default: 0
+#define MARLIN_MODE_FULLSCREEN 0  // Default: 0
 
 /**
  * Keep Serial always On (ONLY SUPPORTED ON TFT24 V1.1, TFT35 V3.0, AND TFT28 V3.0)
@@ -138,7 +138,7 @@
                            // of the number of extruders)
 
 #define PREHEAT_LABELS   {"PLA", "PETG", "ABS", "WOOD", "TPU", "NYLON"}
-#define PREHEAT_HOTEND   {210,   230,    230,   210,    220,   250}
+#define PREHEAT_HOTEND   {210,   230,    230,   200,    220,   250}
 #define PREHEAT_BED      {60,    70,     90,    50,     60,    90}
 
 #define HEAT_MAX_TEMP    {275,       275,       275,       275,       275,       275,       150,    60}
@@ -190,8 +190,8 @@
 #define X_MIN_POS   0
 #define Y_MIN_POS   0
 #define Z_MIN_POS   0
-#define X_MAX_POS 300
-#define Y_MAX_POS 300
+#define X_MAX_POS 310
+#define Y_MAX_POS 310
 #define Z_MAX_POS 400
 
 // Pause Settings
@@ -340,7 +340,7 @@
  *          3: LED_ORANGE,  4: LED_YELLOW,  5: LED_GREEN,
  *          6: LED_BLUE,    7: LED_INDIGO,  8: LED_VIOLET
 */
-#define STARTUP_KNOB_LED_COLOR 2  // Default: 1
+#define STARTUP_KNOB_LED_COLOR 6  // Default: 1
 
 // Keep the LED state in Marlin Mode
 #define KEEP_KNOB_LED_COLOR_MARLIN_MODE
