@@ -10,12 +10,6 @@ Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Artillery Sidewinder 
 <img width=600 src="https://user-images.githubusercontent.com/12702322/115151934-61597a00-a06f-11eb-89db-372e3d1e4647.jpg" />
   
 <br />
-  
-## Connection de l'écran à la carte mère
-
-<img width=700 src="https://user-images.githubusercontent.com/12702322/115152362-10e31c00-a071-11eb-80db-e5554de2c958.png" />
-
-<br />
 
 ## Mise à jour du firmware
 
