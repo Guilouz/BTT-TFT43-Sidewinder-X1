@@ -117,7 +117,7 @@ Pour éditer le fichier **config.ini** suivez les instructions [ici](config_inst
 
 ## Thèmes
 
-|                      Unified Menu                      | The Round Miracle Theme by **[Acenotass](https://github.com/Acenotass)** |
+|                      Unified Menu (thème par défaut)                      | The Round Miracle Theme by **[Acenotass](https://github.com/Acenotass)** |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![Unified Material Main Screen](https://user-images.githubusercontent.com/54359396/98742038-03cd4d00-23ae-11eb-9552-36dc02fe66f4.png) | ![Round Miracle Main Screen](https://user-images.githubusercontent.com/54359396/99251566-d77e5a00-280d-11eb-9c7a-0e7c0111eedd.png) |
 | Use firmware, icons, and fonts from the [`Copy to SD Card root directory to update - Unified Menu Material theme`](https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware/tree/master/Copy%20to%20SD%20Card%20root%20directory%20to%20update/THEME_Unified%20Menu%20Material%20theme) folder | Use firmware, icons, and fonts from the [`Copy to SD Card root directory to update - The Round Miracle theme`](https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware/tree/master/Copy%20to%20SD%20Card%20root%20directory%20to%20update/THEME_The%20Round%20Miracle%20Menu%20Material%20theme) folder |
