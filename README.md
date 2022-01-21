@@ -5,7 +5,8 @@ Si vous aimez mon travail, n'hésitez pas à me soutenir en me payant une 🍺 o
 
 <br />
 
-**Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Artillery Sidewinder X1.**
+**Firmware pour écran BigTreeTech TFT43 3.0 configuré pour Artillery Sidewinder X1.**<br />
+**Disponible dans le section [Releases](https://github.com/Guilouz/BTT-TFT43-Sidewinder-X1/releases).**
 
 Le firmware Marlin pour Artillery Sidewinder X1 configuré pour cet écran se trouve [ici](https://github.com/Guilouz/Marlin-Sidewinder-X1-SKR1.4-Turbo) (SKR 1.4 Turbo) ou [ici](https://github.com/Guilouz/Marlin-Sidewinder-X1-SKR2.0) (SKR 2.0).
 
